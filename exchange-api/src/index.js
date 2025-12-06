@@ -1,5 +1,4 @@
-// src/index.js
-require('dotenv').config();
+require('dotenv').config(); //
 const express = require('express');
 const { ApolloServer } = require('apollo-server-express');
 const mongoose = require('mongoose');
@@ -11,7 +10,7 @@ const MONGODB_URI = process.env.MONGODB_URI || 'mongodb://localhost:27017/exchan
 async function startServer() {
   const app = express();
 
-  // 1) 모든 요청을 콘솔에 찍는 미들웨어
+  // 모든 요청을 콘솔에 찍음
   app.use((req, res, next) => {
     console.log(`[HTTP] ${req.method} ${req.url}`);
     next();
