@@ -1,13 +1,12 @@
-// src/models/ExchangeRate.js
-const mongoose = require('mongoose');
+const mongoose = require('mongoose'); // 
 
 const ExchangeRateSchema = new mongoose.Schema({
-  src: { type: String, required: true },   // 소스통화 (예: "KRW")
-  tgt: { type: String, required: true },   // 타겟통화 (예: "USD")
+  src: { type: String, required: true },   // 소스통화
+  tgt: { type: String, required: true },   // 타겟통화
   rate: { type: Number, required: true },  // 환율
-  date: { type: String, required: true },  // 기준일 (YYYY-MM-DD 문자열)
+  date: { type: String, required: true },  // 기준일
 }, {
-  timestamps: true, // createdAt, updatedAt 자동 생성 (필수는 아니지만 디버깅에 유용)
+  timestamps: true, // createdAt, updatedAt 자동 생성 : 디버깅할 때 사용하기 위해.
 });
 
 // (src, tgt, date) 조합이 하나만 존재하도록 unique 인덱스 설정
