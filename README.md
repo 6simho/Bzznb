@@ -144,7 +144,7 @@ npm install
     }
     ```
     
-3. 환율 조회(krw→usd - 역방향 조회)
+3. 환율 조회(krw→usd - 역방향 조회) 
     [입력]
     ```bash
     curl -XPOST "http://localhost:5110/graphql" --silent \
