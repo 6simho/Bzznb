@@ -2,7 +2,7 @@
 
 ###### 원화(krw)와 미화(usd)의 환율정보를 CRUD하는 Graphql API Server를 구축하였습니다. 또한, 환율정보는 mongodb database 에 저장하도록 하였습니다.
 ---
-## 프로젝트 구조
+## 🏛️ 프로젝트 구조
 ```bash
 exchange-api/
   ├─ src/
@@ -16,7 +16,7 @@ exchange-api/
 
 ```
 ---
-## 기술 스택
+## ⚡️ 기술 스택
 | 기술 | 용도 |
 | --- | --- |
 | **Node.js** | 서버 런타임 |
@@ -28,7 +28,7 @@ exchange-api/
 | **dotenv** | 환경변수 관리 |
 | **curl + jq** | 테스트 및 자동 검증 |
 ---
-## 🗝️실행방법
+## 🗝️ 실행방법
 
 ### 1. GitHub 저장소 클론
 
