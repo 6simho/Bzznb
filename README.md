@@ -88,7 +88,7 @@ npm install
 이 터미널에서 아래 코드를 실행
 
 1. 환율 등록
-    
+    [입력]
     ```bash
     curl -XPOST "http://localhost:5110/graphql" --silent \
     -H  "accept: application/json" \
@@ -100,7 +100,7 @@ npm install
     ' | jq
     ```
     
-    그럼 결과가
+    [출력]
     
     ```bash
     {
@@ -118,7 +118,7 @@ npm install
     이렇게 나옴.
     
 2. 환율 조회(usd→krw - 정방향 조회)
-    
+    [입력]
     ```bash
     curl -XPOST "http://localhost:5110/graphql" --silent \
     -H  "accept: application/json" \
@@ -130,8 +130,7 @@ npm install
     ' | jq
     ```
     
-    결과는 아래와 같을 것.
-    
+    [출력]
     ```bash
     {
       "data": {
@@ -146,7 +145,7 @@ npm install
     ```
     
 3. 환율 조회(krw→usd - 역방향 조회)
-    
+    [입력]
     ```bash
     curl -XPOST "http://localhost:5110/graphql" --silent \
     -H  "accept: application/json" \
@@ -158,7 +157,7 @@ npm install
     ' | jq
     ```
     
-    결과는 아래와 같을 것.
+    [출력]
     
     ```bash
     {
@@ -174,7 +173,7 @@ npm install
     ```
     
 4. 환율 조회(usd→usd - 동일 통화)
-    
+    [입력]
     ```bash
     curl -XPOST "http://localhost:5110/graphql" --silent \
     -H  "accept: application/json" \
@@ -186,7 +185,7 @@ npm install
     ' | jq
     ```
     
-    결과는 아래와 같을 것.
+    [출력]
     
     ```jsx
     {
@@ -202,7 +201,7 @@ npm install
     ```
     
 5. 환율 조회(krw→krw - 동일 통화)
-    
+    [입력]
     ```bash
     curl -XPOST "http://localhost:5110/graphql" --silent \
     -H  "accept: application/json" \
@@ -214,7 +213,7 @@ npm install
     ' | jq
     ```
     
-    결과는 아래와 같을 것.
+    [출력]
     
     ```bash
     {
@@ -230,7 +229,7 @@ npm install
     ```
     
 6. 환율 업데이트(krw→krw - rate를 2로 수정 시도)
-    
+    [입력]
     ```bash
     curl -XPOST "http://localhost:5110/graphql" --silent \
     -H  "accept: application/json" \
@@ -242,7 +241,8 @@ npm install
     ' | jq
     ```
     
-    결과는 아래와 같을 것. (같은 통화 간 rate 수정은 실패함.)
+    [출력]
+    같은 통화 간 rate 수정은 실패함.
     
     ```bash
     {
@@ -256,7 +256,8 @@ npm install
       }
     ```
     
-    [검증] 업데이트가 되었을지 krw→krw 환율을 조회해보자.
+    [검증]
+    업데이트가 되었을지 krw→krw 환율을 조회해보자.
     
     ```bash
     curl -XPOST "http://localhost:5110/graphql" --silent \
@@ -269,7 +270,8 @@ npm install
     ' | jq
     ```
     
-    결과는 아래와 같다. 즉, 같은 통화 간 환율은 1로 변함이 없다.
+    [출력]
+    즉, 같은 통화 간 환율은 1로 변함이 없다.
     
     ```bash
     {
@@ -285,7 +287,7 @@ npm install
     ```
     
 7. 환율 삭제(usd→krw 환율 삭제)
-    
+    [입력]
     ```bash
     curl -XPOST "http://localhost:5110/graphql" --silent \
     -H  "accept: application/json" \
@@ -297,7 +299,7 @@ npm install
     ' | jq
     ```
     
-    아래와 같이 출력이 나옴.
+    [출력]
     
     ```jsx
     {
@@ -312,7 +314,8 @@ npm install
     }
     ```
     
-    [검증] 실제로 없어졌는지 확인하기 위해서 다시 조회해보기. (usd→krw 환율 조회)
+    [검증]
+    실제로 없어졌는지 확인하기 위해서 다시 조회해보기. (usd→krw 환율 조회)
     
     ```bash
     curl -XPOST "http://localhost:5110/graphql" --silent \
@@ -325,6 +328,7 @@ npm install
     ' | jq
     ```
     
+    [출력]
     아래와 같이 null값이 나옴. 즉, 삭제 처리되었다는 것.
     
     ```jsx
@@ -337,7 +341,7 @@ npm install
     ```
     
 8. 환율 삭제(krw→krw 환율 삭제 시도)
-    
+    [입력]
     ```bash
     curl -XPOST "http://localhost:5110/graphql" --silent \
     -H  "accept: application/json" \
@@ -349,6 +353,7 @@ npm install
     ' | jq
     ```
     
+    [출력]
     아래와 같이 출력되는데, 삭제가 되었는지 확인이 필요함. (같은 통화 간 환율은 1로 변함이 없기 때문에.)
     
     ```jsx
@@ -377,6 +382,7 @@ npm install
     ' | jq
     ```
     
+    [출력] 
     아래와 같이 결과가 나옴. 즉, 삭제되지 않음. 추가로, 2025-12-06으로 date가 변경되어 있는 것을 볼 수 있는데 이는 현재 DB내에  krw 관련된 환율 정보가 모두 삭제되어 있기 때문에 오늘 날짜(조회한 날짜 기준)로 나타나는 것임. (이 코드를 실행한 날짜가 2025-12-10이면 출력되는 date도 2025-12-10이다.)
     
     ```bash
