@@ -59,23 +59,9 @@ npm install
 5. mongod.exe 실행하여 서버 시작
 
 → 실행되면 기본 포트 mongodb://localhost:27017 로 MongoDB가 작동함.
-
-### **4 .env 파일 생성**
-
-- 프로젝트 루트(exchange-api/)에 .env 파일을 생성하고 아래 내용 입력
-    
-    ```jsx
-    MONGODB_URI=mongodb://localhost:27017/exchange-db
-    PORT=5110
-    ```
-    
-    - MONGODB_URI: MongoDB 접속 주소
-    - PORT: GraphQL 서버가 열릴 포트
-    
-    ⇒ .env 파일은 .gitignore 처리된 파일이므로 직접 생성해야 함.
     
 
-### **5. 서버 실행**
+### **4. 서버 실행**
 
 - exchange-api 경로에서 아래 코드를 실행한다.
     
@@ -93,7 +79,7 @@ npm install
     ⇒ 서버가 정상적으로 실행된 것.
     
 
-### **6. GraphQL API 테스트 진행**
+### **5. GraphQL API 테스트 진행**
 
 **curl 테스트 스크립트로 검증**
 
