@@ -247,7 +247,7 @@ npm install
     ```
     
     [출력]
-    같은 통화 간 rate 수정은 실패함.
+    같은 통화 간 rate 수정은 실패해야한다.
     
     ```bash
     {
@@ -262,7 +262,7 @@ npm install
     ```
     
     [검증입력]
-    업데이트가 되었을지 krw→krw 환율을 조회해보자.
+    수정이 되었는지 krw→krw 환율을 조회해보자.
     
     ```bash
     curl -XPOST "http://localhost:5110/graphql" --silent \
