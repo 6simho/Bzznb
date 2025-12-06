@@ -1,4 +1,3 @@
-// src/schema.js
 const { gql } = require('apollo-server-express');
 const ExchangeRate = require('./models/ExchangeRate');
 
@@ -92,16 +91,32 @@ const resolvers = {
             };
         }
 
-        // 같은 통화면 1 고정
+        // 같은 통화면 1로 고정
         if (src === tgt) {
-            const today = getTodayString();
-            console.log('[getExchangeRate] same currency, return 1.0, date=', today);
-            return {
+          console.log(`[getExchangeRate] same currency (${src} -> ${tgt}), need latest date`);
+
+          const latest = await ExchangeRate
+            .findOne({
+              $or: [{ src: src }, { tgt: src }]
+            })
+            .sort({ date: -1 })
+            .exec();
+
+          let finalDate = getTodayString(); //오늘 날짜 할당해두고 시작.
+
+          if (latest) { //최근 날짜가 있으면
+            finalDate = latest.date; //finslDate에 넣어주고
+            console.log(`[getExchangeRate] found latest date from DB = ${finalDate}`);
+          } else { //없으면
+            console.log(`[getExchangeRate] no DB history, fallback to today = ${finalDate}`); //오늘 날짜로 가는 것.
+          }
+
+          return {
             src,
             tgt,
-            rate: 1.0,
-            date: today,
-            };
+            rate: 1.0, //1 고정
+            date: finalDate,
+          };
         }
 
         // 역방향 조회
@@ -131,7 +146,7 @@ const resolvers = {
      * 환율 등록 or 업데이트 (upsert)
      * - (src, tgt, date) 기준으로 같은 문서가 있으면 update
      * - 없으면 새로 insert
-     * - date 없으면 오늘 날짜를 기본값으로 사용
+     * - date 없으면 오늘 날짜를 사용
      */
     async postExchangeRate(_, { info }) {
         let { src, tgt, rate } = info;
@@ -140,14 +155,14 @@ const resolvers = {
         src = src.toLowerCase();
         tgt = tgt.toLowerCase();
 
-        if (!date) {
-            date = getTodayString();
+        if (!date) { //날짜가 없으면
+            date = getTodayString(); //오늘 날짜로 업데이트 하자.
         }
 
-        if (src === tgt) {
-            console.log(`[postExchangeRate] same currency (${src} -> ${tgt}), force rate=1.0`);
-            rate = 1.0;
-        } else {
+        if (src === tgt) { //같은 통화이면
+            console.log(`[postExchangeRate] same currency (${src} -> ${tgt}), force rate=1.0`); //1로 강제된다고 알려주고
+            rate = 1.0; //실제로 1 할당.
+        } else { //다른 통화이면 rate는 입력한 그대로 가자.
             console.log(`[postExchangeRate] upsert ${src} -> ${tgt}, rate=${rate}, date=${date}`);
         }
 
