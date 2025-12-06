@@ -88,6 +88,7 @@ npm install
 이 터미널에서 아래 코드를 실행
 
 1. 환율 등록
+
     [입력]
     ```bash
     curl -XPOST "http://localhost:5110/graphql" --silent \
@@ -118,6 +119,7 @@ npm install
     이렇게 나옴.
     
 2. 환율 조회(usd→krw - 정방향 조회)
+
     [입력]
     ```bash
     curl -XPOST "http://localhost:5110/graphql" --silent \
@@ -144,7 +146,8 @@ npm install
     }
     ```
     
-3. 환율 조회(krw→usd - 역방향 조회) 
+3. 환율 조회(krw→usd - 역방향 조회)
+
     [입력]
     ```bash
     curl -XPOST "http://localhost:5110/graphql" --silent \
@@ -173,6 +176,7 @@ npm install
     ```
     
 4. 환율 조회(usd→usd - 동일 통화)
+
     [입력]
     ```bash
     curl -XPOST "http://localhost:5110/graphql" --silent \
@@ -201,6 +205,7 @@ npm install
     ```
     
 5. 환율 조회(krw→krw - 동일 통화)
+
     [입력]
     ```bash
     curl -XPOST "http://localhost:5110/graphql" --silent \
@@ -229,6 +234,7 @@ npm install
     ```
     
 6. 환율 업데이트(krw→krw - rate를 2로 수정 시도)
+
     [입력]
     ```bash
     curl -XPOST "http://localhost:5110/graphql" --silent \
@@ -287,6 +293,7 @@ npm install
     ```
     
 7. 환율 삭제(usd→krw 환율 삭제)
+
     [입력]
     ```bash
     curl -XPOST "http://localhost:5110/graphql" --silent \
@@ -341,6 +348,7 @@ npm install
     ```
     
 8. 환율 삭제(krw→krw 환율 삭제 시도)
+
     [입력]
     ```bash
     curl -XPOST "http://localhost:5110/graphql" --silent \
