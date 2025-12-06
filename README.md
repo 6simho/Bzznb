@@ -116,7 +116,6 @@ npm install
     }
     ```
     
-    이렇게 나옴.
     
 2. 환율 조회(usd→krw - 정방향 조회)
 
@@ -262,7 +261,7 @@ npm install
       }
     ```
     
-    [검증]
+    [검증입력]
     업데이트가 되었을지 krw→krw 환율을 조회해보자.
     
     ```bash
@@ -321,7 +320,7 @@ npm install
     }
     ```
     
-    [검증]
+    [검증입력]
     실제로 없어졌는지 확인하기 위해서 다시 조회해보기. (usd→krw 환율 조회)
     
     ```bash
@@ -377,7 +376,7 @@ npm install
     }
     ```
     
-    [검증] krw→krw 환율 조회.
+    [검증입력] krw→krw 환율 조회.
     
     ```bash
     curl -XPOST "http://localhost:5110/graphql" --silent \
@@ -405,4 +404,3 @@ npm install
       }
     }
     ```
----
