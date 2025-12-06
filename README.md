@@ -16,6 +16,18 @@ exchange-api/
 
 ```
 ---
+## 기술 스택
+| 기술 | 용도 |
+| --- | --- |
+| **Node.js** | 서버 런타임 |
+| **Express** | HTTP 서버 프레임워크 |
+| **Apollo Server (apollo-server-express v3)** | GraphQL 서버 구현 |
+| **GraphQL** | API 스키마 및 쿼리/뮤테이션 |
+| **MongoDB** | 환율 정보 저장소 |
+| **Mongoose** | MongoDB ODM (스키마, 쿼리) |
+| **dotenv** | 환경변수 관리 |
+| **curl + jq** | 테스트 및 자동 검증 |
+---
 ## 🗝️실행방법
 
 ### 1. GitHub 저장소 클론
