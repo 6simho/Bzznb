@@ -4,8 +4,8 @@ const { ApolloServer } = require('apollo-server-express');
 const mongoose = require('mongoose');
 const { typeDefs, resolvers } = require('./schema');
 
-const PORT = process.env.PORT || 5110;
-const MONGODB_URI = process.env.MONGODB_URI || 'mongodb://localhost:27017/exchange-db';
+const PORT = process.env.PORT;
+const MONGODB_URI = process.env.MONGODB_URI;
 
 async function startServer() {
   const app = express();
